@@ -1,15 +1,15 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { execSync } = require("child_process");
 
-const message = "Start PalWorld serivce";
+const description = "Start PalWorld service";
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("start")
-    .setDescription(message),
+    .setDescription(description),
   async execute(interaction) {
     await interaction.deferReply();
     const stdout = execSync('sudo systemctl start palworld-dedicated.service');
-    await interaction.editReply(message);
+    await interaction.editReply(description);
   },
 };
