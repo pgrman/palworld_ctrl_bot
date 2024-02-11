@@ -8,7 +8,7 @@ module.exports = {
     .setName("status")
     .setDescription(description),
   async execute(interaction) {
-    await interaction.deferReply();
+    await interaction.deferReply({ ephemeral: true });
     const stdout = execSync('systemctl list-units -q palworld-dedicated.service').toString();
     await interaction.editReply(stdout);
   },
